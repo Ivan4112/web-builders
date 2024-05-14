@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel = "stylesheet" type="text/css" href = "https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css ">
+    <title>My projects</title>
+    <style>
+        .project-item {
+            border: 1px solid #ccc;
+            margin-bottom: 20px;
+            padding: 10px;
+        }
+        .btn {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container py-3">
+        <header>
+            <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
+                <a class="d-flex align-items-center text-dark text-decoration-none">
+                    <span class="fs-4">Builders</span> </a>
+
+                <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
+                    <a class="me-3 py-2 text-dark text-decoration-none" href="/manager/home"> Home</a>
+                </nav>
+
+            </div>
+        </header>
+    </div>
+    <script>
+        function resetFilter() {
+            document.querySelector('input[name="status"]:checked').checked = false; // Uncheck all radio buttons
+            document.querySelector('form').submit(); // Submit the form
+        }
+    </script>
+
+    <div class="container">
+        <h1>Manager's projects</h1>
+        <form action="/manager/myProjects" method="get" class="mb-3">
+            <div class="btn-group" role="group">
+                <input type="radio" name="status" id="completed" value="completed" th:checked="${status == 'completed'}" class="btn-check">
+                <label for="completed" class="btn btn-outline-primary">Completed</label>
+
+                <input type="radio" name="status" id="uncompleted" value="uncompleted" th:checked="${status == 'uncompleted'}" class="btn-check">
+                <label for="uncompleted" class="btn btn-outline-primary">Not Completed</label>
+            </div>
+
+            <div class="mb-3">
+                <label for="minCost" class="form-label">Minimum Cost:</label>
+                <input type="number" id="minCost" name="minCost" class="form-control">
+                <label for="maxCost" class="form-label">Maximum Cost:</label>
+                <input type="number" id="maxCost" name="maxCost" class="form-control">
+            </div>
+
+            <div class="mb-3">
+                <label for="minDoneJob" class="form-label">Minimum Done Job:</label>
+                <input type="number" id="minDoneJob" name="minDoneJob" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label for="minNotDoneJob" class="form-label">Minimum Not Done Job:</label>
+                <input type="number" id="minNotDoneJob" name="minNotDoneJob" class="form-control">
+            </div>
+
+            <!--<div class="mb-3">
+                <label for="minDoneJob" class="form-label">Minimum Done Job:</label>
+                <input type="number" id="minDoneJob" name="minDoneJob" class="form-control">
+                <label for="minNotDoneJob" class="form-label">Minimum Not Done Job:</label>
+                <input type="number" id="minNotDoneJob" name="minNotDoneJob" class="form-control">
+            </div>-->
+
+            <button type="submit" class="btn btn-primary">Filter</button>
+            <button type="button" class="btn btn-secondary" onclick="resetFilter()">Reset</button>
+
+        </form>
+        <div th:each="project : ${projects}" class="project-item">
+            <h2 th:text="${project.projectName}"></h2>
+            <p>Description: <span th:text="${project.description}"></span></p>
+            <p>Status: <span th:text="${project.status}"></span></p>
+
+            <a th:href="@{/manager/projectInfo(projectId=${project.id})}" class="btn btn-primary">View Full Info</a>
+
+            <a th:href="@{/manager/editProject(projectId=${project.id})}" class="btn btn-primary">Edit</a>
+        </div>
+    </div>
+</body>
+</html>

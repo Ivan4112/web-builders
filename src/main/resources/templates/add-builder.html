@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel = "stylesheet" type="text/css" href = "https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css ">
+    <title>Add builder</title>
+</head>
+<body>
+<div class="container py-3">
+    <header>
+        <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
+            <a class="d-flex align-items-center text-dark text-decoration-none">
+                <span class="fs-4">Builders</span> </a>
+
+            <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
+                <a class="me-3 py-2 text-dark text-decoration-none" href="/manager/home"> Home</a>
+            </nav>
+
+        </div>
+    </header>
+</div>
+
+<div class="container">
+    <h2>Add Builder</h2>
+    <form action="/manager/addBuilder" method="post">
+        <div class="mb-3">
+            <label for="brigade" class="form-label">Brigade:</label>
+            <select id="brigade" name="brigade" class="form-select">
+                <option th:each="brigade : ${brigadeList}" th:value="${brigade.id}" th:text="${brigade.brigadeName}"></option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="position" class="form-label">Position:</label>
+            <select id="position" name="position" class="form-select">
+                <option th:each="position : ${positionList}" th:value="${position.id}" th:text="${position.positionName}"></option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="name" class="form-label">Name:</label>
+            <input type="text" id="name" name="name" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="last_name" class="form-label">Last Name:</label>
+            <input type="text" id="last_name" name="lastName" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="role" class="form-label">Role:</label>
+            <select id="role" name="role" class="form-select">
+                <option value="MANAGER">MANAGER</option>
+                <option value="BUILDER">BUILDER</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="password" class="form-label">Password:</label>
+            <input minlength="6" maxlength="15" type="password" id="password" name="password" class="form-control"
+                   placeholder="Password (at least 6 characters with one uppercase letter and one digit)" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="login" class="form-label">Login:</label>
+            <input type="text" id="login" name="login" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="phoneNumber" class="form-label">Phone Number:</label>
+            <input type="text" id="phoneNumber" name="phoneNumber" class="form-control" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Add Builder</button>
+    </form>
+</div>
+</body>
+</html>

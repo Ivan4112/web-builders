@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Project</title>
+    <link rel = "stylesheet" type="text/css" href = "https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css ">
+
+</head>
+<body>
+<div class="container py-3">
+    <header>
+        <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
+            <a class="d-flex align-items-center text-dark text-decoration-none">
+                <span class="fs-4">Builders</span> </a>
+
+            <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
+                <a class="me-3 py-2 text-dark text-decoration-none" href="/manager/home"> Home</a>
+                <a class="me-3 py-2 text-dark text-decoration-none" href="/manager/myProjects">My Projects</a>
+            </nav>
+
+        </div>
+    </header>
+</div>
+
+<div class="container">
+    <h1>Edit Project</h1>
+    <form action="/manager/myProjects/editProject" method="post">
+        <input type="hidden" name="projectId" th:value="${projectInfo.id}" />
+
+        <div class="mb-3">
+            <label for="projectName" class="form-label">Project Name:</label>
+            <input type="text" id="projectName" name="projectName" class="form-control" th:value="${projectInfo.projectName}" />
+        </div>
+
+        <div class="mb-3">
+            <label for="description" class="form-label">Description:</label>
+            <textarea id="description" name="description" class="form-control" rows="3" th:value="${projectInfo.description}"></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label for="cost" class="form-label">Cost:</label>
+            <input type="number" id="cost" name="cost" class="form-control" th:value="${projectInfo.cost}" />
+        </div>
+
+        <div class="mb-3">
+            <label for="status" class="form-label">Status:</label>
+            <select id="status" name="status" class="form-select">
+                <option value="uncompleted" th:selected="${projectInfo.status == 'uncompleted'}">Uncompleted</option>
+                <option value="completed" th:selected="${projectInfo.status == 'completed'}">Completed</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="doneJob" class="form-label">Done job:</label>
+            <input type="number" id="doneJob" name="doneJob" class="form-control" th:value="${projectInfo.countDoneJob}" />
+        </div>
+
+        <div class="mb-3">
+            <label for="uncompletedJob" class="form-label">Not done job:</label>
+            <input type="number" id="uncompletedJob" name="uncompletedJob" class="form-control" th:value="${projectInfo.countNotDoneJob}" />
+        </div>
+
+        <div class="mb-3">
+            <label for="dueDate" class="form-label">Due date:</label>
+            <input type="date" id="dueDate" name="dueDate" class="form-control" th:value="${projectInfo.dueDate}" />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Save Changes</button>
+    </form>
+</div>
+
+</body>
+</html>

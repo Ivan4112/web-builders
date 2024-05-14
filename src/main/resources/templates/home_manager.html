@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+    <link rel = "stylesheet" type="text/css" href = "https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css ">
+    <title>Manager</title>
+</head>
+<body>
+    <div class="container py-3 header-container">
+        <header>
+            <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
+                <a class="d-flex align-items-center text-dark text-decoration-none">
+                    <span class="fs-4">Builders</span>
+                </a>
+
+                <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
+                    <a class="me-3 py-2 text-dark text-decoration-none" href="/manager/home"> Home  </a>
+                    <a class="me-3 py-2 text-dark text-decoration-none" href="/manager/myProjects">My projects  </a>
+                    <a class="me-3 py-2 text-dark text-decoration-none" href="/manager/editForm">Edit my data  </a>
+                    <a class="me-3 py-2 text-dark text-decoration-none" href="/manager/add-builder">Add builder  </a>
+                    <a class="me-3 py-2 text-dark text-decoration-none" href="/manager/add-project">Add Project  </a>
+                    <a class="me-3 py-2 text-dark text-decoration-none" href="/manager/logs">Logs  </a>
+                    <a class="me-3 py-2 text-dark text-decoration-none" href="/manager/database">Service DB  </a>
+                    <a class="me-3 py-2 text-dark text-decoration-none" href="/logout">Logout</a>
+                </nav>
+            </div>
+        </header>
+    </div>
+
+    <div class="container py-3">
+        <h1>Welcome, <span th:text="${employee.name}"></span>!</h1>
+        <p>Position: <span th:text="${employee.idPosition.positionName}"></span></p>
+        <p>Role: <span th:text="${employee.role}"></span></p>
+    </div>
+
+</body>
+</html>

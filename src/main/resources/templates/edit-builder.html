@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel = "stylesheet" type="text/css" href = "https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css ">
+    <title>Edit</title>
+</head>
+<body>
+<div class="container py-3 header-container">
+    <header>
+        <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
+            <a class="d-flex align-items-center text-dark text-decoration-none">
+                <span class="fs-4">Builders</span>
+            </a>
+
+            <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
+                <a class="me-3 py-2 text-dark text-decoration-none" href="/builder/home"> Home </a>
+                <a class="me-3 py-2 text-dark text-decoration-none" href="/logout">Logout</a>
+            </nav>
+        </div>
+    </header>
+</div>
+
+<div class="container">
+    <h1>Edit Employee</h1>
+    <form action="/builder/updateBuilder" method="POST">
+        <input type="hidden" name="id" th:value="${employee.id}"> <!-- Hidden field for employee ID -->
+        <div class="mb-3">
+            <label for="name" class="form-label">Name:</label>
+            <input type="text" id="name" name="name" class="form-control" th:value="${employee.name}" required>
+        </div>
+        <div class="mb-3">
+            <label for="lastName" class="form-label">Last Name:</label>
+            <input type="text" id="lastName" name="lastName" class="form-control" th:value="${employee.lastName}" required>
+        </div>
+        <div class="mb-3">
+            <label for="login" class="form-label">Login:</label>
+            <input type="text" id="login" name="login" class="form-control" th:value="${employee.login}" required>
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Password:</label>
+            <input minlength="6" maxlength="15" type="password" id="password" name="password" class="form-control"
+                   placeholder="Password (at least 6 characters with one uppercase letter and one digit)" required>
+        </div>
+        <div class="mb-3">
+            <label for="number" class="form-label">Number:</label>
+            <input type="text" id="number" name="number" class="form-control" th:value="${employee.phoneNumber}" required>
+        </div>
+        <!-- Hidden fields for id_brigade, id_position, and role -->
+        <input type="hidden" name="brigadeId" th:value="${employee.idBrigade.brigadeName}">
+        <input type="hidden" name="positionId" th:value="${employee.idPosition.positionName}">
+        <input type="hidden" name="role" th:value="${employee.role}">
+        <button type="submit" class="btn btn-primary">Save Changes</button>
+    </form>
+</div>
+</body>
+</html>

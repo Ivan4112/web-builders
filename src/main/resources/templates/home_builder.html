@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Builder</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+    <style>
+        .project-item {
+            border: 1px solid #ccc;
+            margin-bottom: 20px;
+            padding: 10px;
+        }
+
+        .btn {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+<div class="container py-3 header-container">
+    <header>
+        <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
+            <a class="d-flex align-items-center text-dark text-decoration-none">
+                <span class="fs-4">Builders</span>
+            </a>
+
+            <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
+                <a class="me-3 py-2 text-dark text-decoration-none" href="/builder/editBuilder">Edit</a>
+                <a class="me-3 py-2 text-dark text-decoration-none" href="/logout">Logout</a>
+            </nav>
+        </div>
+    </header>
+</div>
+
+<div class="container">
+    <h1>Welcome, <span th:text="${employee.name}"></span>!</h1>
+    <p>Position: <span th:text="${employee.idPosition.positionName}"></span></p>
+    <p>Role: <span th:text="${employee.role}"></span></p>
+    <p>Brigade: <span th:text="${employee.idBrigade.brigadeName}"></span></p>
+
+    <div th:each="project : ${project}" class="project-item">
+        <h2 th:text="${project.projectName}"></h2>
+        <p>Description: <span th:text="${project.description}"></span></p>
+        <p>Status: <span th:text="${project.status}"></span></p>
+    </div>
+</div>
+</body>
+</html>

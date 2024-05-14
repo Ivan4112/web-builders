@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html namespace-uri="http://www.thymeleaf.org"
+      xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+    <!--<form method="post" action="/builder/home">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username"><br><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password"><br><br>
+        <input type="submit" value="Login">
+    </form>-->
+
+    <form action="/login" method="post" class="login-background">
+        <p th:if="${error}" class="text-danger">Login or Password Incorrect</p>
+        <div class="mb-3 ml-5 mr-5">
+            <input type="text" name="username" class="form-control" placeholder="Username" required="required">
+        </div>
+        <div class="mb-3 ml-5 mr-5">
+            <input type="password" name="password" class="form-control" placeholder="Password" required="required">
+        </div>
+        <div class="mb-3 pl-5 pr-5">
+            <button type="submit" value="Login" class="btn btn-primary w-100">Login</button>
+        </div>
+
+    </form>
+
+    <table class="table table-bordered"  style = "margin-left: auto; margin-right: auto">
+        <thead class="table-header" style="background-color: orange; border: 4px chartreuse">
+        <tr>
+            <th>LastName</th>
+            <th>Name</th>
+            <th>Role</th>
+            <th>Phone</th>
+        </tr>
+        </thead>
+
+        <tbody style="border: 4px #18c4e3">
+        <tr th:each="em : ${empl}">
+            <td th:text="${em.lastName}"></td>
+            <td th:text="${em.name}"></td>
+            <td th:text="${em.role}"></td>
+            <td th:text="${em.phoneNumber}"></td>
+        </tr>
+        </tbody>
+    </table>
+</body>
+</html>

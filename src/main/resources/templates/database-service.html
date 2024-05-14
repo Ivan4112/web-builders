@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Database Service</title>
+</head>
+<body>
+<h1>Database Service</h1>
+<form action="/manager/database/backup" method="POST">
+    <button type="submit">Archive Database</button>
+</form>
+<!--<form action="/manager/database/restore" method="POST">
+    <button type="submit">Restore Database</button>
+</form>-->
+
+<form action="/manager/database/restore" method="post" enctype="multipart/form-data">
+    <label for="backupFile">Restore Database</label><br><br>
+    <!-- For restore operation, allow user to choose backup file -->
+    <input type="file" id="backupFile" name="backupFile" accept=".bak">
+    <br><br>
+    <button type="submit">Submit</button>
+</form>
+<br>
+<form action="/manager/database/copy" method="POST">
+    <button type="submit">Create Database Copy</button>
+</form>
+</body>
+</html>

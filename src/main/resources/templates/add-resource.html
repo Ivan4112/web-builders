@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add resource</title>
+    <link rel = "stylesheet" type="text/css" href = "https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css ">
+</head>
+<body>
+<div class="container py-3">
+    <header>
+        <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
+            <a class="d-flex align-items-center text-dark text-decoration-none">
+                <span class="fs-4">Builders</span> </a>
+
+            <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
+                <a class="me-3 py-2 text-dark text-decoration-none" href="/manager/home"> Home</a>
+                <a class="me-3 py-2 text-dark text-decoration-none" href="/manager/myProjects">My Projects</a>
+            </nav>
+
+        </div>
+    </header>
+</div>
+<div class="container">
+    <h1>Add Resource</h1>
+    <form th:action="@{/manager/addResource(projectId=${projectId})}" method="post">
+        <div class="mb-3">
+            <label for="nameResource" class="form-label">Resource Name:</label>
+            <input type="text" class="form-control" id="nameResource" name="nameResource" required>
+        </div>
+        <div class="mb-3">
+            <label for="cost" class="form-label">Cost:</label>
+            <input type="number" class="form-control" id="cost" name="cost" step="0.01" min="0" required>
+        </div>
+        <div class="mb-3">
+            <label for="quantity" class="form-label">Quantity:</label>
+            <input type="number" class="form-control" id="quantity" name="quantity" min="1" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Add Resource</button>
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel = "stylesheet" type="text/css" href = "https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css ">
+    <title>Edit builder</title>
+</head>
+<body>
+<div class="container py-3">
+    <header>
+        <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
+            <a class="d-flex align-items-center text-dark text-decoration-none">
+                <span class="fs-4">Builders</span> </a>
+
+            <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
+                <a class="me-3 py-2 text-dark text-decoration-none" href="/manager/home"> Home</a>
+                <a class="me-3 py-2 text-dark text-decoration-none" href="/manager/myProjects">My Projects</a>
+            </nav>
+
+        </div>
+    </header>
+</div>
+<div class="container">
+    <h1>Edit Employee</h1>
+    <form action="/manager/projectInfo/updateEmployee" method="post">
+        <input type="hidden" name="id" th:value="${employee.id}" /> <!-- Hidden field for employee ID -->
+
+        <!-- Select field for brigade -->
+        <div class="mb-3">
+            <label for="brigade" class="form-label">Brigade:</label>
+            <select class="form-select" id="brigade" name="brigade">
+                <option th:each="brigade : ${brigades}" th:value="${brigade.id}" th:text="${brigade.brigadeName}"></option>
+            </select>
+        </div>
+
+        <!-- Select field for position -->
+        <div class="mb-3">
+            <label for="position" class="form-label">Position:</label>
+            <select class="form-select" id="position" name="position">
+                <option th:each="position : ${positions}" th:value="${position.id}" th:text="${position.positionName}"></option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Update</button>
+    </form>
+
+    <!-- Show success message if builder was successfully edited -->
+    <!--<div th:if="${param.success}">
+        <div class="alert alert-success mt-3" role="alert">
+            Builder was successfully edited.
+        </div>
+    </div>-->
+</div>
+
+</body>
+
+
+</html>
