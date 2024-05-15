@@ -48,8 +48,6 @@ public class DataBaseController {
                 return "error";
             }
         } else {
-            //manager/database
-            // dataBaseService.backupDatabase();
             return "redirect:/manager/database";
         }
     }

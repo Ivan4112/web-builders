@@ -53,10 +53,8 @@ public class DataBaseService {
     }
 
     // Method to create a copy of the database
-    public void copyDatabase() {
-        // Implement the logic to create a copy of the database using JDBC or other tools
-        // Example: Execute SQL query to create a copy of the database
-        /*String sqlQuery = "SELECT * INTO NewDatabase.dbo FROM OldDatabase.dbo";
+    public void copyDatabase(String filePath) {
+        /*String sqlQuery = "SELECT * INTO NewDatabase.dbo FROM Builders.dbo";
         jdbcTemplate.execute(sqlQuery);*/
     }
 }
